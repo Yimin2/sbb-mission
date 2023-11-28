@@ -1,15 +1,16 @@
 package com.ll.sbb_misson_1;
 
+import com.ll.sbb_misson_1.answer.Answer;
+import com.ll.sbb_misson_1.answer.AnswerRepository;
+import com.ll.sbb_misson_1.question.Question;
+import com.ll.sbb_misson_1.question.QuestionRepository;
 import jakarta.transaction.Transactional;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
-import java.util.Queue;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;

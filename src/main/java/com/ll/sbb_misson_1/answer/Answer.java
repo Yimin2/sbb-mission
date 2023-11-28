@@ -1,5 +1,6 @@
-package com.ll.sbb_misson_1;
+package com.ll.sbb_misson_1.answer;
 
+import com.ll.sbb_misson_1.question.Question;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

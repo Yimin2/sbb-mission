@@ -1,4 +1,4 @@
-package com.ll.sbb_misson_1;
+package com.ll.sbb_misson_1.answer;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
