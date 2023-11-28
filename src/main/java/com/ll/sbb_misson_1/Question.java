@@ -21,7 +21,7 @@ public class Question {
 
     @Column(length = 200)
     // 엔티티 속성 = 테이블 컬럼명, 세부설정을 위해 사용, 길이제한 200
-    private Integer subject;
+    private String subject;
 
     @Column(columnDefinition = "TEXT")
     // 속성 정의, 글자 수를 제한할 수 없는 경우 사용
