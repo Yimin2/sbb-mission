@@ -1,13 +1,42 @@
-<link rel="stylesheet" type="text/css" th:href="@{/style.css}">
-<h1 th:text="${question.subject}"></h1>
-<div th:text="${question.content}"></div>
-<h5 th:text="|${#lists.size(question.answerList)}개의 답변이 있습니다.|"></h5>
-<div>
-    <ul>
-        <li th:each="answer : ${question.answerList}" th:text="${answer.content}"></li>
-    </ul>
+<link href="https://cdn.jsdelivr.net/npm/daisyui@4.0.8/dist/full.min.css" rel="stylesheet" type="text/css"/>
+<script src="https://cdn.tailwindcss.com"></script>
+
+<div class="mockup-window border bg-base-300">
+    <div class="flex flex-col px-4 py-5 bg-base-200">
+        <!-- 질문 -->
+        <h1 class="text-5xl font-bold py-5" th:text="${question.subject}"></h1>
+        <div class="chat chat-start py-5">
+            <div class="chat-bubble">
+                <h1 th:text="${question.content}"></h1>
+                <div class="chat-footer opacity-50" th:text="${#temporals.format(question.createDate, 'yyyy-MM-dd HH:mm')}"></div>
+            </div>
+        </div>
+
+        <div tabindex="0" class="collapse collapse-arrow border border-base-300 bg-base-200">
+            <!-- 답변 개수 표시 -->
+            <div class="collapse-title text-xl font-medium">
+                <h5 th:text="|${#lists.size(question.answerList)}개의 답변이 있습니다.|"></h5>
+            </div>
+            <!-- 답변 내용 반복 -->
+            <div class="collapse-content">
+                <div class="chat chat-end">
+                    <div class="chat-bubble">
+                        <div>
+                            <ul>
+                                <li th:each="answer : ${question.answerList}" th:text="${answer.content}"></li>
+                            </ul>
+                        </div>
+                        <div class="chat-footer opacity-50" th:text="${#temporals.format(question.createDate, 'yyyy-MM-dd HH:mm')}"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 답변 입력 -->
+        <div class = "flex flex-col py-5">
+            <form th:action="@{|/answer/create/${question.id}|}" method="post">
+                <input type="text" placeholder="텍스트를 입력해주세요." class="input input-bordered w-full max-w-sm" name="content" id="content"/>
+                <button class="btn btn-active mx-3">답변 등록</button>
+            </form>
+        </div>
+    </div>
 </div>
-<form th:action="@{|/answer/create/${question.id}|}" method="post">
-    <textarea name="content" id="content" rows="15"></textarea>
-    <input type="submit" value="답변등록">
-</form>
