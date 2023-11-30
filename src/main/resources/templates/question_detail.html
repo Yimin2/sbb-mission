@@ -5,7 +5,7 @@
         <h1 class="text-5xl font-bold py-5" th:text="${question.subject}"></h1>
         <div class="chat chat-start py-5">
             <div class="chat-bubble">
-                <h1 th:text="${question.content}"></h1>
+                <h1 style="white-space: pre-line;" th:text="${question.content}"></h1>
                 <div class="chat-footer opacity-50" th:text="${#temporals.format(question.createDate, 'yyyy-MM-dd HH:mm')}"></div>
             </div>
         </div>
@@ -20,8 +20,10 @@
                 <div class="chat chat-end">
 
                     <div class="chat-bubble">
-                        <div style="white-space: pre-line;" th:each="answer : ${question.answerList}" th:text="${answer.content}"></div>
-                        <div class="chat-footer opacity-50" th:text="${#temporals.format(question.createDate, 'yyyy-MM-dd HH:mm')}"></div>
+                        <div style="white-space: pre-line;" th:each="answer : ${question.answerList}">
+                            <div th:text="${answer.content}"></div>
+                            <div class="chat-footer opacity-50" th:text="${#temporals.format(answer.createDate, 'yyyy-MM-dd HH:mm')}"></div>
+                        </div>
                     </div>
                 </div>
             </div>
